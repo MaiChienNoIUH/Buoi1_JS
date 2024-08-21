@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <Script>
+        // Dữ liệu 1
+        CaHeo = [96, 108, 89]
+        Koala = [88, 91, 110]
+
+        sum = 0;
+        for (const a of CaHeo) {
+            sum += a;
+        }
+        avg_caHeo = sum / CaHeo.length
+
+        sum = 0;
+        for (const a of Koala) {
+            sum += a;
+        }
+        avg_Koala = sum / Koala.length
+
+        //Điều kiện:
+        if (avg_caHeo > avg_Koala) {
+            console.log('Cá heo thắng với điểm trung bình là ' + avg_caHeo);
+        } else if (avg_caHeo < avg_Koala) {
+            console.log('Koalas thắng với điểm trung bình là ' + avg_Koala);
+        } else {
+            console.log('Hòa với điểm trung bình là ' + avg_Koala);
+        }
+
+        // Điều kiện bonus 1: xác định người chiến thắng với điều kiện điểm tối thiểu
+        minScore = 100;
+        if (avg_caHeo > avg_Koala && avg_caHeo >= minScore) {
+            console.log('Cá heo thắng với điểm trung bình là ' + avg_caHeo);
+        } else if (avg_caHeo < avg_Koala && avg_Koala >= minScore) {
+            console.log('Koalas thắng với điểm trung bình là ' + avg_Koala);
+        } else if (avg_caHeo === avg_Koala && avg_caHeo >= minScore) {
+            console.log('Hòa với điểm trung bình là ' + avg_caHeo);
+        } else {
+            console.log("Không có đội nào thắng cuộc");
+        }
+    </Script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
