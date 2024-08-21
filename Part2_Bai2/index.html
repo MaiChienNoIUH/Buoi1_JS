@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <Script>
+        // 1. Viết hàm 'calcTip' 
+        const calcTip = (bill) => bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+
+        // Kiểm tra hàm với giá trị hóa đơn là 100
+        console.log(calcTip(100)); // In ra 15
+
+        // 2. Tạo mảng 'bills' 
+        let bills = [125, 555, 44];
+
+        // 3. Tạo mảng 'tips' 
+        let tips = bills.map(calcTip);
+
+        // 4. Phần thưởng: Tạo mảng 'total' 
+        let total = bills.map((bill, index) => bill + tips[index]);
+
+        // In kết quả 
+        console.log('Bills: ', bills); // [125, 555, 44]
+        console.log('Tips: ', tips); // [18.75, 111, 8.8]
+        console.log('Total: ', total); // [143.75, 666, 52.8]
+    </Script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
