@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <Script>
+        // 1. Tạo đối tượng cho Mark và John với các thuộc tính cho tên đầy đủ, khối lượng và chiều cao
+        const mark = {
+            fullName: 'Mark Miller',
+            weight: 78,
+            height: 1.69,
+
+            // 2. Tạo phương thức 'calcBMI' để tính BMI và lưu kết quả vào thuộc tính BMI
+            calcBMI: function() {
+                this.bmi = this.weight / (this.height ** 2);
+                return this.bmi;
+            }
+        };
+
+        const john = {
+            fullName: 'John Smith',
+            weight: 92,
+            height: 1.95,
+
+            // 2. Tạo phương thức 'calcBMI' để tính BMI và lưu kết quả vào thuộc tính BMI
+            calcBMI: function() {
+                this.bmi = this.weight / (this.height ** 2);
+                return this.bmi;
+            }
+        };
+
+        // 3. Tính BMI cho cả Mark và John
+        mark.calcBMI();
+        john.calcBMI();
+
+        // 4. So sánh và ghi vào bảng điều khiển xem ai có BMI cao hơn
+        if (mark.bmi > john.bmi) {
+            console.log(`BMI của ${mark.fullName} (${mark.bmi.toFixed(1)}) cao hơn của ${john.fullName} (${john.bmi.toFixed(1)})!`);
+        } else if (john.bmi > mark.bmi) {
+            console.log(`BMI của ${john.fullName} (${john.bmi.toFixed(1)}) cao hơn của ${mark.fullName} (${mark.bmi.toFixed(1)})!`);
+        } else {
+            console.log(`BMI của ${mark.fullName} và ${john.fullName} bằng nhau (${mark.bmi.toFixed(1)})!`);
+        }
+    </Script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
