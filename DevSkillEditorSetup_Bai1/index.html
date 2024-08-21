@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <Script>
+        function printForecast(arr) {
+            let forecastStr = '';
+
+            for (let i = 0; i < arr.length; i++) {
+                forecastStr += `... ${arr[i]}oC trong ngày thứ ${i + 1} `;
+            }
+
+            forecastStr += '...';
+            console.log(forecastStr);
+        }
+
+        // Dữ liệu thử nghiệm
+        const data1 = [17, 21, 23];
+        const data2 = [12, 5, -5, 0, 4];
+
+        // Gọi hàm với các dữ liệu thử nghiệm
+        printForecast(data1);
+        printForecast(data2);
+    </Script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
