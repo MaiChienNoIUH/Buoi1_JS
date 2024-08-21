@@ -16,20 +16,10 @@
         BMI_mark = Weigth_mark / (High_mark ** 2)
         BMI_john = Weigth_john / (High_john ** 2)
 
-        markHigherBMI = BMI_mark > BMI_john
-        console.log(markHigherBMI)
-
-        // Dữ liệu 2
-        Weigth_mark = 95
-        High_mark = 1.88
-        Weigth_john = 85
-        High_john = 1.76
-
-        BMI_mark = Weigth_john / (High_mark ** 2)
-        BMI_john = High_john / (High_john ** 2)
-
-        markHigherBMI = BMI_mark > BMI_john
-        console.log(markHigherBMI)
+        if (BMI_mark > BMI_john)
+            console.log('BMI của Mark (' + BMI_mark + ') cao hơn BMI của John (' + BMI_john + ')')
+        else
+            console.log('BMI của Mark (' + BMI_mark + ') cao hơn BMI của John (' + BMI_john + ')')
     </Script>
 
 </head>
