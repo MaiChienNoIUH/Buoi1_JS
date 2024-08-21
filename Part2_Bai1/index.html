@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <Script>
+        // 1. Tạo hàm mũi tên 'calcAverage' 
+        const calcAverage = (a, b, c) => (a + b + c) / 3;
+
+        // Dữ liệu 1
+        avgDolphins1 = calcAverage(44, 23, 71);
+        avgKoalas1 = calcAverage(65, 54, 49);
+
+        // Dữ liệu 2
+        avgDolphins2 = calcAverage(85, 54, 41);
+        avgKoalas2 = calcAverage(23, 34, 27);
+
+        // 3. Tạo hàm 'checkWinner' để xác định người chiến thắng
+        const checkWinner = (avgDolphins, avgKoalas) => {
+            if (avgDolphins >= 2 * avgKoalas) {
+                console.log(`Dolphins thắng (${avgDolphins} đấu với ${avgKoalas})`);
+            } else if (avgKoalas >= 2 * avgDolphins) {
+                console.log(`Koalas thắng (${avgKoalas} đấu với ${avgDolphins})`);
+            } else {
+                console.log('Không có đội nào thắng!');
+            }
+        };
+
+        // 4. Sử dụng hàm 'checkWinner' để xác định người chiến thắng cho cả Dữ liệu 1 và Dữ liệu 2
+        console.log('Dữ liệu 1:');
+        checkWinner(avgDolphins1, avgKoalas1);
+
+        console.log('Dữ liệu 2:');
+        checkWinner(avgDolphins2, avgKoalas2);
+    </Script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
