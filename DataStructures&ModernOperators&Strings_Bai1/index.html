@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <Script>
+        // Định nghĩa đối tượng game
+        const game = {
+            team1: 'Bayern Munich',
+            team2: 'Borrussia Dortmund',
+            players: [
+                [
+                    'Neuer', 'Pavard', 'Martinez', 'Alaba', 'Davies',
+                    'Kimmich', 'Goretzka', 'Coman', 'Muller', 'Gnabry', 'Lewandowski'
+                ],
+                [
+                    'Burki', 'Schulz', 'Hummels', 'Akanji', 'Hakimi',
+                    'Weigl', 'Witsel', 'Hazard', 'Brandt', 'Sancho', 'Gotze'
+                ],
+            ],
+            score: '4:0',
+            scored: ['Lewandowski', 'Gnabry', 'Lewandowski', 'Hummels'],
+            date: 'Nov 9th, 2037',
+            odds: {
+                team1: 1.33,
+                x: 3.25,
+                team2: 6.5,
+            },
+        };
+
+        // 1. Tạo mảng cầu thủ cho mỗi đội (players1 và players2)
+        const players1 = game.players[0];
+        const players2 = game.players[1];
+
+        // 2. Thủ môn và các cầu thủ trên sân cho Bayern Munich (team1)
+        const [gk, ...fieldPlayers] = players1;
+
+        // 3. Tạo mảng 'allPlayers' chứa tất cả các cầu thủ của cả hai đội
+        const allPlayers = [...players1, ...players2];
+
+        // 4. Tạo mảng 'players1Final' chứa tất cả các cầu thủ team1 ban đầu cộng với 'Thiago', 'Coutinho' và 'Perisic'
+        const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+
+        // 5. Tạo các biến cho mỗi tỷ lệ cược từ đối tượng game.odds
+        const { odds: { team1, x: draw, team2 } } = game;
+
+        // 6. Viết hàm 'printGoals'
+        const printGoals = (...players) => {
+            console.log(`${players.length} goals were scored by: ${players.join(', ')}`);
+        };
+
+        // Dữ liệu thử nghiệm cho hàm printGoals
+        printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
+        printGoals(...game.scored); // Dùng dữ liệu từ game.scored
+
+        // 7. In ra bảng điều khiển đội nào có khả năng chiến thắng cao hơn
+        team1 < team2 && console.log('Team 1 is more likely to win');
+        team2 < team1 && console.log('Team 2 is more likely to win');
+
+
+    </Script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

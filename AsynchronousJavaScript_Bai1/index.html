@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Phần 1: Tạo hàm whereAmI
+        async function whereAmI(lat, lng) {
+            try {
+                // 2. Gọi API Geocoding
+                const res = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+
+                if (!res.ok) {
+                    throw new Error(`Geocoding API error: ${res.status}`);
+                }
+
+                const data = await res.json();
+
+                console.log(data); // Xem toàn bộ dữ liệu phản hồi để xác nhận cấu trúc
+
+                // Kiểm tra và lấy thông tin quốc gia
+                if (!data.country || !data.country.country) {
+                    throw new Error('Country not found in geocoding data');
+                }
+
+                const country = data.country.country; // Hoặc data.country.name tùy thuộc vào cấu trúc phản hồi
+                console.log(`You are in ${data.city || 'unknown city'}, ${country}`);
+
+                // 6. Gọi API quốc gia
+                const countryRes = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+
+                if (!countryRes.ok) {
+                    throw new Error(`Countries API error: ${countryRes.status}`);
+                }
+
+                const countryData = await countryRes.json();
+
+                // 7. Hiển thị thông tin quốc gia
+                console.log(`Country: ${countryData[0].name.common}`);
+
+            } catch (error) {
+                // 4. Xử lý lỗi và hiển thị thông báo lỗi
+                console.error(`Error: ${error.message}`);
+            }
+        }
+
+        // Thử nghiệm với dữ liệu thử nghiệm
+        whereAmI(52.508, 13.381); // Berlin
+        whereAmI(19.037, 72.873); // Mumbai
+        whereAmI(-33.933, 18.474); // Cape Town
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

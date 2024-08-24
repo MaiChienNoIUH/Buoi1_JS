@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. Tạo lớp CarCl với các phương thức accelerate và brake
+        class CarCl {
+            constructor(make, speed) {
+                this.make = make;
+                this.speed = speed;
+            }
+
+            // Phương thức accelerate để tăng tốc xe
+            accelerate() {
+                this.speed += 10;
+                console.log(`${this.make} is going at ${this.speed} km/h`);
+            }
+
+            // Phương thức brake để giảm tốc xe
+            brake() {
+                this.speed -= 5;
+                console.log(`${this.make} is going at ${this.speed} km/h`);
+            }
+
+            // Getter để lấy tốc độ hiện tại bằng dặm/giờ
+            get speedUS() {
+                return this.speed / 1.6;
+            }
+
+            // Setter để thiết lập tốc độ bằng dặm/giờ
+            set speedUS(speed) {
+                this.speed = speed * 1.6;
+            }
+        }
+
+        // 4. Tạo đối tượng mới và thử nghiệm
+        const car1 = new CarCl('Ford', 120);
+
+        // Thử nghiệm với các phương thức
+        car1.accelerate(); // Ford is going at 130 km/h
+        car1.brake();      // Ford is going at 125 km/h
+
+        // Thử nghiệm với getter
+        console.log(`Speed in mi/h: ${car1.speedUS}`); // Speed in mi/h: 78.125
+
+        // Thử nghiệm với setter
+        car1.speedUS = 100; // Chuyển đổi 100 mi/h thành km/h và lưu
+        console.log(`Updated speed in km/h: ${car1.speed}`); // Updated speed in km/h: 160 km/h
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

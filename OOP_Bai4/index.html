@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. Tạo lớp CarCl với các phương thức có thể chuỗi
+        class CarCl {
+            constructor(make, speed) {
+                this.make = make;
+                this.speed = speed;
+            }
+
+            // Phương thức accelerate để tăng tốc xe
+            accelerate() {
+                this.speed += 10;
+                console.log(`${this.make} is going at ${this.speed} km/h`);
+                return this; // Hỗ trợ chuỗi
+            }
+
+            // Phương thức brake để giảm tốc xe
+            brake() {
+                this.speed -= 5;
+                console.log(`${this.make} is going at ${this.speed} km/h`);
+                return this; // Hỗ trợ chuỗi
+            }
+        }
+
+        // 2. Tạo lớp EVCl kế thừa từ CarCl với thuộc tính charge được bảo vệ
+        class EVCl extends CarCl {
+            #charge; // Biến private để lưu trữ mức sạc
+
+            constructor(make, speed, charge) {
+                super(make, speed); // Gọi constructor của lớp cha CarCl
+                this.#charge = charge; // Khởi tạo biến private
+            }
+
+            // Phương thức chargeBattery để cập nhật mức sạc của pin
+            chargeBattery(chargeTo) {
+                this.#charge = chargeTo;
+                console.log(`Charge after charging: ${this.#charge}%`);
+                return this; // Hỗ trợ chuỗi
+            }
+
+            // Ghi đè phương thức accelerate để điều chỉnh mức sạc và hỗ trợ chuỗi
+            accelerate() {
+                this.speed += 20;
+                this.#charge -= 1;
+                console.log(`${this.make} going at ${this.speed} km/h, with a charge of ${this.#charge}%`);
+                return this; // Hỗ trợ chuỗi
+            }
+        }
+
+        // 3. Tạo đối tượng EVCl và thử nghiệm với các phương thức chuỗi
+        const rivian = new EVCl('Rivian', 120, 23);
+
+        // Thử nghiệm với chuỗi các phương thức
+        rivian
+            .accelerate()          // Tăng tốc và giảm mức sạc
+            .chargeBattery(90)     // Cập nhật mức sạc pin
+            .brake()               // Giảm tốc
+            .accelerate()          // Tăng tốc lại
+            .chargeBattery(100);   // Cập nhật mức sạc pin
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

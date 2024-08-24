@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+    </script>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parallel {
+            border: 2px solid red;
+        }
+    </style>
+    <script>
+        // Hàm tạo hình ảnh trả về một promise
+        function createImage(imgPath) {
+            return new Promise((resolve, reject) => {
+                const img = document.createElement('img');
+                img.src = imgPath;
+
+                img.onload = () => {
+                    document.querySelector('.images').appendChild(img);
+                    resolve(img); // Fulfill the promise with the image element
+                };
+
+                img.onerror = () => {
+                    reject(new Error('Image load error')); // Reject the promise on error
+                };
+            });
+        }
+
+        // Hàm để dừng thực thi trong một khoảng thời gian (giây)
+        function wait(seconds) {
+            return new Promise(resolve => setTimeout(resolve, seconds * 1000));
+        }
+
+        // Phần 1: Hàm bất đồng bộ loadNPause sử dụng async/await
+        async function loadNPause() {
+            try {
+                // Tải hình ảnh đầu tiên
+                const img1 = await createImage('../images/Arrays_Bai1.png');
+                await wait(2); // Dừng thực thi trong 2 giây
+
+                img1.style.display = 'none'; // Ẩn hình ảnh hiện tại
+
+                // Tải hình ảnh thứ hai
+                const img2 = await createImage('../images/Arrays_Bai2.png');
+                await wait(2); // Dừng thực thi trong 2 giây
+
+                img2.style.display = 'none'; // Ẩn hình ảnh thứ hai
+            } catch (err) {
+                console.error(err.message); // Xử lý lỗi nếu có
+            }
+        }
+
+        // Phần 2: Hàm bất đồng bộ loadAll
+        async function loadAll(imgArr) {
+            try {
+                // Tải tất cả hình ảnh từ mảng imgArr
+                const imgs = imgArr.map(createImage); // Tạo mảng các promise
+
+                // Chờ tất cả các promise hoàn tất
+                const loadedImgs = await Promise.all(imgs);
+
+                // Kiểm tra mảng hình ảnh đã tải
+                console.log(loadedImgs);
+
+                // Thêm lớp CSS 'parallel' vào tất cả hình ảnh
+                loadedImgs.forEach(img => img.classList.add('parallel'));
+            } catch (err) {
+                console.error(err.message); // Xử lý lỗi nếu có
+            }
+        }
+
+        // Khi tài liệu đã sẵn sàng, gọi hàm loadNPause và loadAll
+        document.addEventListener('DOMContentLoaded', () => {
+            loadNPause(); // Gọi hàm loadNPause để tải hình ảnh và dừng trong 2 giây
+            loadAll(['../images/Arrays_Bai1.png', '../images/Arrays_Bai2.png', '../images/Arrays_Bai3.png']); // Gọi hàm loadAll để tải nhiều hình ảnh đồng thời
+        });
+    </script>
+</head>
+
+<body>
+    <div class="images"></div>
+</body>
+
+</html>
+
+</body>
+</html>

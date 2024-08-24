@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function calcAverageHumanAge(ages) {
+            // 1. Tính toán tuổi người cho từng con chó
+            const humanAges = ages.map(dogAge => {
+                return dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4;
+            });
+
+            // 2. Loại bỏ các con chó có tuổi người dưới 18 năm
+            const adultDogs = humanAges.filter(age => age >= 18);
+
+            // 3. Tính toán tuổi người trung bình của các con chó trưởng thành còn lại
+            const averageAge = adultDogs.length > 0
+                ? adultDogs.reduce((acc, age) => acc + age, 0) / adultDogs.length
+                : 0;
+
+            return averageAge;
+        }
+
+        // Dữ liệu thử nghiệm
+        const data1 = [5, 2, 4, 1, 15, 8, 3];
+        const data2 = [16, 6, 10, 5, 6, 1, 4];
+
+        // Chạy hàm với các tập dữ liệu thử nghiệm
+        console.log(`Tuổi người trung bình cho dữ liệu 1: ${calcAverageHumanAge(data1)}`);
+        console.log(`Tuổi người trung bình cho dữ liệu 2: ${calcAverageHumanAge(data2)}`);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

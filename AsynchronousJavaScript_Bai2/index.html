@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Loading Challenge</title>
+    <style>
+        .images img {
+            display: block;
+            margin: 10px auto;
+            max-width: 100%;
+        }
+    </style>
+    <script>
+        // PART 1
+        // Tạo một hàm để tạo hình ảnh và trả về một promise
+        function createImage(imgPath) {
+            return new Promise((resolve, reject) => {
+                const img = document.createElement('img');
+                img.src = imgPath;
+
+                img.onload = () => {
+                    // Khi hình ảnh đã tải thành công, thêm vào DOM và giải quyết promise
+                    document.querySelector('.images').appendChild(img);
+                    resolve(img); // Fulfill the promise with the image element
+                };
+
+                img.onerror = () => {
+                    // Nếu có lỗi khi tải hình ảnh, từ chối promise với thông báo lỗi
+                    reject(new Error('Image load error')); // Reject the promise on error
+                };
+            });
+        }
+
+        // Hàm để dừng thực thi trong một khoảng thời gian (giây)
+        function wait(seconds) {
+            return new Promise(resolve => setTimeout(resolve, seconds * 1000));
+        }
+
+        // Biến toàn cục để lưu trữ hình ảnh hiện tại
+        let currentImage;
+
+        // PART 2
+        window.onload = () => {
+            createImage('../images/Arrays_Bai1.png')
+                .then(img => {
+                    currentImage = img; // Lưu hình ảnh hiện tại
+                    return wait(2); // Dừng thực thi trong 2 giây
+                })
+                .then(() => {
+                    currentImage.style.display = 'none'; // Ẩn hình ảnh hiện tại
+                    return createImage('../images/Arrays_Bai2.png'); // Tải hình ảnh thứ hai
+                })
+                .then(img => {
+                    currentImage = img; // Cập nhật hình ảnh hiện tại
+                    return wait(2); // Dừng thực thi trong 2 giây
+                })
+                .then(() => {
+                    currentImage.style.display = 'none'; // Ẩn hình ảnh thứ hai
+                })
+                .catch(err => {
+                    console.error(err.message); // Xử lý lỗi nếu có
+                });
+        };
+    </script>
+</head>
+
+<body>
+    <div class="images"></div>
+</body>
+
+</html>

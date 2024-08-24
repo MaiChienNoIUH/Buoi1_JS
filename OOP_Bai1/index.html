@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. Hàm khởi tạo để tạo đối tượng Car
+        function Car(make, speed) {
+            this.make = make;
+            this.speed = speed;
+        }
+
+        // 2. Phương thức accelerate để tăng tốc xe
+        Car.prototype.accelerate = function () {
+            this.speed += 10;
+            console.log(`${this.make} is going at ${this.speed} km/h`);
+        };
+
+        // 3. Phương thức brake để giảm tốc xe
+        Car.prototype.brake = function () {
+            this.speed -= 5;
+            console.log(`${this.make} is going at ${this.speed} km/h`);
+        };
+
+        // 4. Tạo hai đối tượng Car và thử nghiệm với các phương thức
+        const car1 = new Car('BMW', 120);
+        const car2 = new Car('Mercedes', 95);
+
+        // Thử nghiệm với car1
+        car1.accelerate(); // BMW is going at 130 km/h
+        car1.accelerate(); // BMW is going at 140 km/h
+        car1.brake();      // BMW is going at 135 km/h
+        car1.brake();      // BMW is going at 130 km/h
+
+        // Thử nghiệm với car2
+        car2.accelerate(); // Mercedes is going at 105 km/h
+        car2.accelerate(); // Mercedes is going at 115 km/h
+        car2.brake();      // Mercedes is going at 110 km/h
+        car2.brake();      // Mercedes is going at 105 km/h
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

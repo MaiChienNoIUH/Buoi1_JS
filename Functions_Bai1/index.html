@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const poll = {
+            question: 'Ngôn ngữ lập trình yêu thích của bạn là gì?',
+            options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+            answers: new Array(4).fill(0),
+
+            registerNewAnswer() {
+                // Hiển thị câu hỏi và tùy chọn cho người dùng
+                const input = prompt(`${this.question}\n${this.options.join('\n')}\n(Ghi số tùy chọn)`);
+
+                // Chuyển đổi đầu vào thành số và kiểm tra tính hợp lệ
+                const answer = Number(input);
+                if (Number.isNaN(answer) || answer < 0 || answer >= this.options.length) {
+                    alert('Số tùy chọn không hợp lệ');
+                    return;
+                }
+
+                // Cập nhật số lượng câu trả lời
+                this.answers[answer] += 1;
+
+                // Hiển thị kết quả
+                this.displayResults();
+            },
+
+            displayResults(type = 'array') {
+                if (type === 'string') {
+                    console.log(`Kết quả thăm dò là ${this.answers.join(', ')}`);
+                } else {
+                    console.log(this.answers);
+                }
+            }
+        };
+
+        // Dữ liệu thử nghiệm
+        // Thay đổi dữ liệu trong đối tượng để thử nghiệm
+
+        // Ví dụ 1
+        poll.answers = [5, 2, 3];
+        console.log('Kết quả thăm dò với dữ liệu 1:');
+        poll.displayResults('string'); // Kết quả thăm dò là 5, 2, 3
+
+        // Ví dụ 2
+        poll.answers = [1, 5, 3, 9, 6, 1];
+        console.log('Kết quả thăm dò với dữ liệu 2:');
+        poll.displayResults(); // [1, 5, 3, 9, 6, 1]
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function checkDogs(dogsJulia, dogsKate) {
+            // 1. Tạo một bản sao nông của mảng dogsJulia và xóa các tuổi của mèo
+            const juliaDogs = dogsJulia.slice(); // Sao chép nông mảng dogsJulia
+            juliaDogs.shift(); // Xóa con chó đầu tiên (mèo)
+            juliaDogs.pop();   // Xóa hai con chó cuối cùng (mèo)
+            juliaDogs.pop();
+
+            // 2. Tạo một mảng kết hợp các độ tuổi chó từ Julia (đã sửa) và Kate
+            const allDogs = juliaDogs.concat(dogsKate);
+
+            // 3. Ghi ra bảng điều khiển cho mỗi con chó còn lại
+            allDogs.forEach((age, index) => {
+                if (age >= 3) {
+                    console.log(`Con chó số ${index + 1} là chó trưởng thành và ${age} tuổi`);
+                } else {
+                    console.log(`Con chó số ${index + 1} vẫn là chó con và ${age} tuổi`);
+                }
+            });
+        }
+
+        // Dữ liệu thử nghiệm
+        console.log('Dữ liệu thử nghiệm 1:');
+        checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+
+        console.log('Dữ liệu thử nghiệm 2:');
+        checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

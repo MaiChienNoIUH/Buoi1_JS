@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. Tạo lớp Car
+        class Car {
+            constructor(make, speed) {
+                this.make = make;
+                this.speed = speed;
+            }
+
+            // Phương thức accelerate để tăng tốc xe
+            accelerate() {
+                this.speed += 10;
+                console.log(`${this.make} is going at ${this.speed} km/h`);
+            }
+
+            // Phương thức brake để giảm tốc xe
+            brake() {
+                this.speed -= 5;
+                console.log(`${this.make} is going at ${this.speed} km/h`);
+            }
+        }
+
+        // 2. Tạo lớp EV kế thừa từ Car
+        class EV extends Car {
+            constructor(make, speed, charge) {
+                super(make, speed); // Gọi constructor của lớp cha Car
+                this.charge = charge;
+            }
+
+            // Phương thức chargeBattery để cập nhật mức sạc của pin
+            chargeBattery(chargeTo) {
+                this.charge = chargeTo;
+            }
+
+            // Ghi đè phương thức accelerate để điều chỉnh mức sạc
+            accelerate() {
+                this.speed += 20;
+                this.charge -= 1;
+                console.log(`${this.make} going at ${this.speed} km/h, with a charge of ${this.charge}%`);
+            }
+        }
+
+        // 4. Tạo đối tượng EV và thử nghiệm
+        const tesla = new EV('Tesla', 120, 23);
+
+        // Thử nghiệm với các phương thức
+        tesla.chargeBattery(90); // Đặt mức sạc pin
+        console.log(`Charge after charging: ${tesla.charge}%`); // Kiểm tra mức sạc pin
+        tesla.accelerate(); // Tăng tốc và giảm mức sạc
+        tesla.brake();      // Giảm tốc
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
